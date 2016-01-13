@@ -1,10 +1,13 @@
 import sublime, sublime_plugin, http.client, urllib, json
 
-API_KEY  = ''
-HOSTNAME = ''
-PROJECT  = ''
-
 class RedminePasteCommand(sublime_plugin.TextCommand):
+  def __init__(self, *args, **kwargs):
+    super(RedminePasteCommand, self).__init__(*args, **kwargs)
+    settings = sublime.load_settings('redminepaste.sublime-settings')
+    self.api_key = settings.get('api_key', '')
+    self.hostname = settings.get('hostname', '')
+    self.project = settings.get('project', '')
+
   def run(self, view):
     syntax = self.view.settings().get('syntax')
     lang = syntax.split('/')[1]
@@ -13,12 +16,12 @@ class RedminePasteCommand(sublime_plugin.TextCommand):
         content = self.view.substr(region)
       else:
         content = self.view.substr(sublime.Region(0, self.view.size()))
-    
-    r, p = http.client.HTTPSConnection(HOSTNAME), urllib.parse.urlencode({'paste_title': '', 'paste[text]': content, 'paste[lang]': lang, 'paste_submit' : 1})
+
+    r, p = http.client.HTTPSConnection(self.hostname), urllib.parse.urlencode({'paste_title': '', 'paste[text]': content, 'paste[lang]': lang, 'paste_submit' : 1})
     h = {"Content-type": "application/x-www-form-urlencoded",
-         "X-Redmine-API-Key": API_KEY,
+         "X-Redmine-API-Key": self.api_key,
          "Accept": "text/plain"}
-    r.request("POST", "/projects/" + PROJECT + "/pastes.json", p, h)
+    r.request("POST", "/projects/" + self.project + "/pastes.json", p, h)
     g = r.getresponse()
     if g.status == 302:
         url = g.getheader('Location')
