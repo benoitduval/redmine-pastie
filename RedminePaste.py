@@ -7,6 +7,7 @@ class RedminePasteCommand(sublime_plugin.TextCommand):
     self.api_key = settings.get('api_key', '')
     self.hostname = settings.get('hostname', '')
     self.project = settings.get('project', '')
+    self.expires = settings.get('expires', '86400')
 
   def run(self, view):
     syntax = self.view.settings().get('syntax')
@@ -17,7 +18,7 @@ class RedminePasteCommand(sublime_plugin.TextCommand):
       else:
         content = self.view.substr(sublime.Region(0, self.view.size()))
 
-    r, p = http.client.HTTPSConnection(self.hostname), urllib.parse.urlencode({'paste_title': '', 'paste[text]': content, 'paste[lang]': lang, 'paste_submit' : 1})
+    r, p = http.client.HTTPSConnection(self.hostname), urllib.parse.urlencode({'paste_title': '', 'paste[text]': content, 'paste[expires]': self.expires, 'paste[lang]': lang, 'paste_submit' : 1})
     h = {"Content-type": "application/x-www-form-urlencoded",
          "X-Redmine-API-Key": self.api_key,
          "Accept": "text/plain"}
