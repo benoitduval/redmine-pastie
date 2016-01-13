@@ -3,7 +3,7 @@ import sublime, sublime_plugin, http.client, urllib, json
 class RedminePasteCommand(sublime_plugin.TextCommand):
   def __init__(self, *args, **kwargs):
     super(RedminePasteCommand, self).__init__(*args, **kwargs)
-    settings = sublime.load_settings('redminepaste.sublime-settings')
+    settings = sublime.load_settings('RedminePaste.sublime-settings')
     self.api_key = settings.get('api_key', '')
     self.hostname = settings.get('hostname', '')
     self.project = settings.get('project', '')
