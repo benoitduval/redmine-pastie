@@ -4,9 +4,9 @@ import http.client
 import urllib
 import json
 
-class RedminePasteCommand(sublime_plugin.TextCommand):
+class RedminePastieCommand(sublime_plugin.TextCommand):
   def __init__(self, *args, **kwargs):
-    super(RedminePasteCommand, self).__init__(*args, **kwargs)
+    super(RedminePastieCommand, self).__init__(*args, **kwargs)
     settings = sublime.load_settings('RedminePastie.sublime-settings')
     self.api_key = settings.get('api_key', '')
     self.hostname = settings.get('hostname', '')

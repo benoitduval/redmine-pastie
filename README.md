@@ -12,7 +12,7 @@ Go to Package folder (Mac exemple)
 
 Clone repository
 
-    git clone git://github.com/benoitduval/redmine-pastie
+    git clone https://github.com/benoitduval/redmine-pastie
 
 Reload your Sublime Text application
 
