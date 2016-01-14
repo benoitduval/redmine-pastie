@@ -34,7 +34,7 @@ Configuration
 
 Add your redmine informations, on the menu go to:
 
-    > `Sublime Text` > `Preferences` > `Package Settings` > `Redmine-pastie` > `Settings - User`
+> `Sublime Text` > `Preferences` > `Package Settings` > `Redmine-pastie` > `Settings - User`
 
 Edit file by adding your redmine API key, project name, host and Time-to-live for pastie
 
