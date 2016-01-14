@@ -17,12 +17,12 @@
             [
               {
                 "command": "open_file",
-                "args": { "file": "${packages}/User/RedminePastie.sublime-settings" },
+                "args": { "file": "${packages}/redmine-pastie/RedminePastie.sublime-settings" },
                 "caption": "Settings – Default"
               },
               {
                 "command": "open_file",
-                "args": { "file": "${packages}/redmine-pastie/RedminePastie.sublime-settings" },
+                "args": { "file": "${packages}/User/RedminePastie.sublime-settings" },
                 "caption": "Settings – User"
               },
               {
