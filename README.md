@@ -1,12 +1,39 @@
 # redmine-pastie
 
-Edit file by addind your redmine API key, project name and host
+Installation
+============
 
-# Edit shortcut
+Manual
+------
 
-Add your shortcut in SublimeText 3 by open menu :
-Sublime Text > Preferences > Key Bindings - User
+Go to Package folder (Mac exemple)
 
-add this line
+    cd ~/Library/Application\ Support/Sublime\ Text\ 3/Packages
 
-{ "keys": ["alt+shift+p"], "command": "redmine_paste" },
+Clone repository
+
+    git clone git://github.com/benoitduval/redmine-pastie
+
+Reload your Sublime Text application
+
+Add your redmine informations, on the menu go to:
+
+    > Sublime Text > Preferences > Package Settings > Redmine-pastie > Settings - User
+
+Edit file by adding your redmine API key, project name, host and Time-to-live for pastie
+
+    {
+        "api_key": "xxxxxx",
+        "hostname": "my.redmine.url",
+        "project": "myProject",
+        "expires": "3600"
+    }
+
+Shortcut
+--------
+
+By default the shortcut is
+
+    alt+shift+p"
+
+This will paste the selected text (or full file) in Redmine, and set the link in your clipboard

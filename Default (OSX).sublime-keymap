@@ -1,0 +1,3 @@
+[
+    { "keys": ["alt+shift+p"], "command": "redmine-pastie" },
+]

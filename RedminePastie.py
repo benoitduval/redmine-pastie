@@ -1,9 +1,13 @@
-import sublime, sublime_plugin, http.client, urllib, json
+import sublime
+import sublime_plugin
+import http.client
+import urllib
+import json
 
 class RedminePasteCommand(sublime_plugin.TextCommand):
   def __init__(self, *args, **kwargs):
     super(RedminePasteCommand, self).__init__(*args, **kwargs)
-    settings = sublime.load_settings('RedminePaste.sublime-settings')
+    settings = sublime.load_settings('RedminePastie.sublime-settings')
     self.api_key = settings.get('api_key', '')
     self.hostname = settings.get('hostname', '')
     self.project = settings.get('project', '')
@@ -12,6 +16,7 @@ class RedminePasteCommand(sublime_plugin.TextCommand):
   def run(self, view):
     syntax = self.view.settings().get('syntax')
     lang = syntax.split('/')[1]
+
     for region in self.view.sel():
       if not region.empty():
         content = self.view.substr(region)
